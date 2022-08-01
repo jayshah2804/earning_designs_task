@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { apiData, myImageSliceActions } from "./Store/store";
+import { FaSearch } from "react-icons/fa";
+import "./App.css";
 
 let flag = true;
 let header = "All";
@@ -39,15 +41,16 @@ function App() {
       searchHandler({ target: { value: header } }, { type: "redirected" });
     }
   };
-  
+
   return (
-    <div>
-      {console.log(myData[0].url === undefined)}
+    <div className="container">
       <input
         type="text"
         onChange={searchHandler}
-        style={{ display: "block" }}
+        className="searchField"
+        placeholder="Search..."
       />
+      <FaSearch className="icon" />
       <div onClick={buttonClickHandler}>
         <button>Mountain</button>
         <button>Beach</button>
