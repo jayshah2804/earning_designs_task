@@ -40,7 +40,9 @@
 .icon {
   background-color: rgb(35, 35, 58);
   color: white;
-  height: 2rem;
+  vertical-align: middle;
+  height: 2.4rem;
+  width: 2rem;
 }
 
 .searchField {
@@ -49,5 +51,12 @@
 }
 
 .container {
-  margin-left: 20rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.img-container {
+  text-align: center;
+  margin: auto;
+  width: 65rem;
 }

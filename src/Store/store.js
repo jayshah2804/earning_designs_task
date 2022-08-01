@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 let responseData;
-const initialState = [{}];
+let initialState;
 
 let myImageSlice = createSlice({
   name: "slice",
