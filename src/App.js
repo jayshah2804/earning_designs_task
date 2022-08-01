@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
+  const [data, setData] = useState();
+  const [apires, setApires] = useState();
+
+  useEffect(() => {
+    async function func() {
+      const res = await fetch(
+        "https://slightbrilliantdribbleware.jayshah280420.repl.co/",{
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+      }
+      );
+      const resdata = await res.json();
+      setApires(resdata);
+    }
+    func();
+  },[]);
+
+  const searchHandler = (e) => {
+    if (e.target.value === "") {
+      setData(data);
+    }
+    const filteredData = apires.filter((item) =>
+      item.alt.toLowerCase().includes(e.target.value)
+    );
+    setData(filteredData);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {console.log(data)}
+      {data && data.map(ele => <img src={ele.url} alt={ele.alt} />)}
+      <input type="text" onChange={searchHandler} />
     </div>
   );
 }
